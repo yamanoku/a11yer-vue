@@ -117,80 +117,35 @@ export function getFocusableElements(container: Element): HTMLElement[] {
 
 /**
  * Check if an element is managed by an existing a11y library
- * (Radix UI, react-aria, Headless UI, MUI, etc.)
+ * (Headless UI, Ark UI, Vuetify, Element Plus, etc.)
  * These libraries manage their own ARIA attributes, focus traps,
  * and keyboard handlers — patching on top would break them.
  */
 export function isManagedByLibrary(el: Element): boolean {
-  // Radix UI: data-radix-*, data-state
-  if (el.hasAttribute("data-radix-collection-item")) return true;
-  if (el.hasAttribute("data-radix-focus-guard")) return true;
-  if (
-    el.hasAttribute("data-state") &&
-    (el.hasAttribute("data-radix-menu-content") ||
-      el.closest("[data-radix-popper-content-wrapper]") ||
-      el.closest("[data-radix-dialog-content]") ||
-      el.closest("[data-radix-popover-content]"))
-  )
-    return true;
-
-  // react-aria: data-rac-*, data-react-aria-*
-  for (const attr of el.attributes) {
-    if (attr.name.startsWith("data-rac")) return true;
-    if (attr.name.startsWith("data-react-aria")) return true;
-  }
-
-  // Headless UI: data-headlessui-state, data-headlessui
+  // Headless UI (Vue + React): data-headlessui-state, data-headlessui
   if (el.hasAttribute("data-headlessui-state")) return true;
   if (el.hasAttribute("data-headlessui")) return true;
-
-  // MUI: class names starting with Mui, data-testid with Mui prefix
-  const className = el.getAttribute("class") || "";
-  if (/\bMui[A-Z]/.test(className)) return true;
 
   // Ark UI / Zag: data-scope, data-part
   if (el.hasAttribute("data-scope") && el.hasAttribute("data-part"))
     return true;
 
-  // Chakra UI: class names containing chakra-
-  if (/\bchakra-/.test(className)) return true;
-
-  // Mantine: class names starting with mantine-
-  if (/\bmantine-/.test(className)) return true;
-
-  // Ant Design: class names starting with ant-
-  if (/\bant-/.test(className)) return true;
-
-  // shadcn/ui (uses Radix primitives — already caught by data-radix-* above)
-  // But also check for data-slot which shadcn/ui v2 uses
+  // shadcn/ui v2: data-slot
   if (el.hasAttribute("data-slot")) return true;
 
-  // NextUI: data-nextui-*
-  for (const attr of el.attributes) {
-    if (attr.name.startsWith("data-nextui")) return true;
-  }
+  const className = el.getAttribute("class") || "";
 
-  // Check if a React-managed library has attached internal fiber props
-  // indicating it handles its own keyboard events
-  const hasInternalHandler = Object.keys(el).some(
-    (k) =>
-      k.startsWith("__reactFiber") || k.startsWith("__reactInternals"),
-  );
-  if (hasInternalHandler) {
-    try {
-      const fiberKey = Object.keys(el).find(
-        (k) =>
-          k.startsWith("__reactFiber") || k.startsWith("__reactInternals"),
-      );
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const fiber = fiberKey ? (el as any)[fiberKey] : null;
-      const props = fiber?.memoizedProps;
-      // If the component already has onKeyDown, it manages its own keyboard
-      if (props?.onKeyDown && el.getAttribute("role")) return true;
-    } catch {
-      // Ignore fiber inspection failures
-    }
-  }
+  // Vuetify: class names with v- prefix
+  if (/\bv-[a-z]/.test(className)) return true;
+
+  // Element Plus: class names with el- prefix
+  if (/\bel-/.test(className)) return true;
+
+  // PrimeVue: class names with p- prefix
+  if (/\bp-[a-z]/.test(className)) return true;
+
+  // Naive UI: class names with n- prefix
+  if (/\bn-[a-z]/.test(className)) return true;
 
   return false;
 }

@@ -295,20 +295,6 @@ describe("ensureId", () => {
 // ---------------------------------------------------------------------------
 
 describe("isManagedByLibrary", () => {
-  it("returns true for element with data-radix-collection-item", () => {
-    const el = document.createElement("div");
-    el.setAttribute("data-radix-collection-item", "");
-    document.body.appendChild(el);
-    expect(isManagedByLibrary(el)).toBe(true);
-  });
-
-  it("returns true for element with data-radix-focus-guard", () => {
-    const el = document.createElement("div");
-    el.setAttribute("data-radix-focus-guard", "");
-    document.body.appendChild(el);
-    expect(isManagedByLibrary(el)).toBe(true);
-  });
-
   it("returns true for element with data-headlessui-state", () => {
     const el = document.createElement("div");
     el.setAttribute("data-headlessui-state", "open");
@@ -319,34 +305,6 @@ describe("isManagedByLibrary", () => {
   it("returns true for element with data-headlessui attribute", () => {
     const el = document.createElement("div");
     el.setAttribute("data-headlessui", "");
-    document.body.appendChild(el);
-    expect(isManagedByLibrary(el)).toBe(true);
-  });
-
-  it("returns true for element with Mui class name", () => {
-    const el = document.createElement("div");
-    el.setAttribute("class", "MuiButton-root");
-    document.body.appendChild(el);
-    expect(isManagedByLibrary(el)).toBe(true);
-  });
-
-  it("returns false for element with non-Mui class name", () => {
-    const el = document.createElement("div");
-    el.setAttribute("class", "my-button");
-    document.body.appendChild(el);
-    expect(isManagedByLibrary(el)).toBe(false);
-  });
-
-  it("returns true for element with data-rac attribute", () => {
-    const el = document.createElement("div");
-    el.setAttribute("data-rac", "");
-    document.body.appendChild(el);
-    expect(isManagedByLibrary(el)).toBe(true);
-  });
-
-  it("returns true for element with data-react-aria attribute", () => {
-    const el = document.createElement("div");
-    el.setAttribute("data-react-aria-focus-guard", "");
     document.body.appendChild(el);
     expect(isManagedByLibrary(el)).toBe(true);
   });
@@ -362,6 +320,48 @@ describe("isManagedByLibrary", () => {
   it("returns false for element with only data-scope (no data-part)", () => {
     const el = document.createElement("div");
     el.setAttribute("data-scope", "menu");
+    document.body.appendChild(el);
+    expect(isManagedByLibrary(el)).toBe(false);
+  });
+
+  it("returns true for element with data-slot", () => {
+    const el = document.createElement("div");
+    el.setAttribute("data-slot", "");
+    document.body.appendChild(el);
+    expect(isManagedByLibrary(el)).toBe(true);
+  });
+
+  it("returns true for Vuetify element (v- class prefix)", () => {
+    const el = document.createElement("div");
+    el.setAttribute("class", "v-btn v-btn--elevated");
+    document.body.appendChild(el);
+    expect(isManagedByLibrary(el)).toBe(true);
+  });
+
+  it("returns true for Element Plus element (el- class prefix)", () => {
+    const el = document.createElement("div");
+    el.setAttribute("class", "el-button el-button--primary");
+    document.body.appendChild(el);
+    expect(isManagedByLibrary(el)).toBe(true);
+  });
+
+  it("returns true for PrimeVue element (p- class prefix)", () => {
+    const el = document.createElement("div");
+    el.setAttribute("class", "p-button p-component");
+    document.body.appendChild(el);
+    expect(isManagedByLibrary(el)).toBe(true);
+  });
+
+  it("returns true for Naive UI element (n- class prefix)", () => {
+    const el = document.createElement("div");
+    el.setAttribute("class", "n-button n-button--default-type");
+    document.body.appendChild(el);
+    expect(isManagedByLibrary(el)).toBe(true);
+  });
+
+  it("returns false for element with non-managed class name", () => {
+    const el = document.createElement("div");
+    el.setAttribute("class", "my-button");
     document.body.appendChild(el);
     expect(isManagedByLibrary(el)).toBe(false);
   });

@@ -1,5 +1,28 @@
-<!-- BEGIN:nextjs-agent-rules -->
-# This is NOT the Next.js you know
+# a11yer docs
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
-<!-- END:nextjs-agent-rules -->
+Nuxt 4 documentation site for the a11yer library.
+
+## Prerequisites
+
+The a11yer library must be built before running the docs dev server or generating the static site:
+
+```bash
+# From the repo root
+bun run build
+```
+
+This populates `../dist/` which the docs site imports via a Nuxt alias.
+
+## Development
+
+```bash
+bun run dev
+```
+
+## Static generation
+
+```bash
+bun run build
+```
+
+Output is written to `.output/public/`.

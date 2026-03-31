@@ -8,6 +8,6 @@ export default defineConfig({
   clean: true,
   splitting: false,
   treeshake: true,
-  external: ["react", "react-dom"],
+  external: ["vue"],
   outDir: "dist",
 });
