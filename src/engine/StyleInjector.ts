@@ -6,13 +6,13 @@ export interface StyleInjectorOptions {
   reducedMotion: boolean;
 }
 
-const STYLE_ID = "a11yer-styles";
+const STYLE_ID = "a11yer-vue-styles";
 
 function buildCSS(options: StyleInjectorOptions): string {
   const sections: string[] = [];
 
   // Visually hidden utility class (used by skip link + announcer)
-  sections.push(`.a11yer-sr-only {
+  sections.push(`.a11yer-vue-sr-only {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -25,7 +25,7 @@ function buildCSS(options: StyleInjectorOptions): string {
 }`);
 
   // Skip link
-  sections.push(`.a11yer-skip-link {
+  sections.push(`.a11yer-vue-skip-link {
   position: absolute;
   left: -9999px;
   top: auto;
@@ -37,7 +37,7 @@ function buildCSS(options: StyleInjectorOptions): string {
   font-weight: bold;
   font-size: 14px;
 }
-.a11yer-skip-link:focus {
+.a11yer-vue-skip-link:focus {
   left: 8px;
   top: 8px;
 }`);
@@ -83,7 +83,7 @@ export class StyleInjector {
       } else {
         this.styleEl = document.createElement("style");
         this.styleEl.id = STYLE_ID;
-        this.styleEl.setAttribute("data-a11yer", "styles");
+        this.styleEl.setAttribute("data-a11yer-vue", "styles");
         document.head.appendChild(this.styleEl);
       }
     }
@@ -95,6 +95,6 @@ export class StyleInjector {
     if (typeof document === "undefined") return;
     this.styleEl?.remove();
     this.styleEl = null;
-    document.getElementById("a11yer-contrast-fixes")?.remove();
+    document.getElementById("a11yer-vue-contrast-fixes")?.remove();
   }
 }

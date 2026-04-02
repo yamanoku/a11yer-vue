@@ -1,5 +1,5 @@
 /**
- * Performance benchmark for a11yer's DomScanner.
+ * Performance benchmark for a11yer-vue's DomScanner.
  * Run: bunx vitest run scripts/benchmark.ts
  *
  * Uses vitest's happy-dom environment for realistic DOM.

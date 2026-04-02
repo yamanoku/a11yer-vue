@@ -4,7 +4,7 @@ import { A11yer } from "./A11yer";
 
 afterEach(() => {
   document.body.replaceChildren();
-  document.getElementById("a11yer-styles")?.remove();
+  document.getElementById("a11yer-vue-styles")?.remove();
 });
 
 describe("A11yer", () => {
@@ -21,7 +21,7 @@ describe("A11yer", () => {
       slots: { default: "<div>App</div>" },
       attachTo: document.body,
     });
-    const skipLink = document.querySelector(".a11yer-skip-link");
+    const skipLink = document.querySelector(".a11yer-vue-skip-link");
     expect(skipLink).not.toBeNull();
     expect(skipLink?.getAttribute("href")).toBe("#main-content");
   });
@@ -80,7 +80,7 @@ describe("A11yer", () => {
     mount(A11yer, {
       slots: { default: "<div>Styled</div>" },
     });
-    const styleEl = document.getElementById("a11yer-styles");
+    const styleEl = document.getElementById("a11yer-vue-styles");
     expect(styleEl).not.toBeNull();
   });
 
@@ -89,7 +89,7 @@ describe("A11yer", () => {
       props: { config: { a11y: { reducedMotion: "always" } } },
       slots: { default: "<div>Motion reduced</div>" },
     });
-    const styleEl = document.getElementById("a11yer-styles");
+    const styleEl = document.getElementById("a11yer-vue-styles");
     expect(styleEl?.textContent).toContain("prefers-reduced-motion");
   });
 });

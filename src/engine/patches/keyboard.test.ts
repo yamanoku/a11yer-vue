@@ -117,7 +117,7 @@ describe("patchKeyboardHandlers", () => {
     // Element should be marked as patched but NOT get a tabindex added by the
     // patcher (because it's library-managed, so the normal patching path is skipped).
     // The element itself had no tabindex, and library-managed path only calls markPatched.
-    expect(div.hasAttribute("data-a11yer-keyboard")).toBe(true);
+    expect(div.hasAttribute("data-a11yer-vue-keyboard")).toBe(true);
     // tabindex should not have been set because it skipped normal patching
     expect(div.hasAttribute("tabindex")).toBe(false);
   });
@@ -137,12 +137,12 @@ describe("patchKeyboardHandlers", () => {
     expect(clickSpy).toHaveBeenCalledTimes(1); // only one handler
   });
 
-  it("marks patched elements with data-a11yer-keyboard", () => {
+  it("marks patched elements with data-a11yer-vue-keyboard", () => {
     const div = document.createElement("div");
     div.setAttribute("role", "button");
     document.body.appendChild(div);
 
     patchKeyboardHandlers(document.body, ctx);
-    expect(div.hasAttribute("data-a11yer-keyboard")).toBe(true);
+    expect(div.hasAttribute("data-a11yer-vue-keyboard")).toBe(true);
   });
 });

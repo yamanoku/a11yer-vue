@@ -84,12 +84,12 @@ export function hasExplicitRole(el: Element): boolean {
 
 /** Mark an element as patched by a specific key */
 export function markPatched(el: Element, key: string): void {
-  el.setAttribute(`data-a11yer-${key}`, "");
+  el.setAttribute(`data-a11yer-vue-${key}`, "");
 }
 
 /** Check if an element has been patched by a specific key */
 export function isPatched(el: Element, key: string): boolean {
-  return el.hasAttribute(`data-a11yer-${key}`);
+  return el.hasAttribute(`data-a11yer-vue-${key}`);
 }
 
 /** Check if an element is visible (not display:none, hidden, etc.) */

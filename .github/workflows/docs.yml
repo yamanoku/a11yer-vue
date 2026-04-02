@@ -26,10 +26,10 @@ jobs:
       - name: Install root deps
         run: bun install --frozen-lockfile
 
-      - name: Build a11yer
+      - name: Build a11yer-vue
         run: bun run build
 
-      - name: Install docs deps (links local a11yer)
+      - name: Install docs deps (links local a11yer-vue)
         working-directory: docs
         run: bun install
 

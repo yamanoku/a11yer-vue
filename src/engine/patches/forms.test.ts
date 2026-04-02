@@ -33,7 +33,7 @@ describe("patchAriaInvalid", () => {
     patchAriaInvalid(document.body, ctx);
     expect(input.getAttribute("aria-invalid")).toBe("true");
     expect(input.hasAttribute("aria-describedby")).toBe(true);
-    expect(input.hasAttribute("data-a11yer-error-source")).toBe(true);
+    expect(input.hasAttribute("data-a11yer-vue-error-source")).toBe(true);
   });
 });
 
@@ -58,7 +58,7 @@ describe("cleanAriaInvalid", () => {
     // Clean should remove aria-invalid
     cleanAriaInvalid(document.body);
     expect(input.hasAttribute("aria-invalid")).toBe(false);
-    expect(input.hasAttribute("data-a11yer-error-source")).toBe(false);
+    expect(input.hasAttribute("data-a11yer-vue-error-source")).toBe(false);
     expect(input.hasAttribute("aria-describedby")).toBe(false);
   });
 });

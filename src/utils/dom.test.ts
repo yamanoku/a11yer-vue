@@ -193,11 +193,11 @@ describe("markPatched / isPatched", () => {
     expect(isPatched(el, "autocomplete")).toBe(false);
   });
 
-  it("sets the attribute data-a11yer-<key>", () => {
+  it("sets the attribute data-a11yer-vue-<key>", () => {
     const el = document.createElement("div");
     document.body.appendChild(el);
     markPatched(el, "focus-trap");
-    expect(el.hasAttribute("data-a11yer-focus-trap")).toBe(true);
+    expect(el.hasAttribute("data-a11yer-vue-focus-trap")).toBe(true);
   });
 });
 

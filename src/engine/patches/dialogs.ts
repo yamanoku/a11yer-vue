@@ -97,7 +97,7 @@ export function patchDialogFocusTrap(
  */
 export function cleanDialogFocusTraps(root: Element): void {
   const allTrapped = root.querySelectorAll<HTMLElement>(
-    "[data-a11yer-focus-trap]",
+    "[data-a11yer-vue-focus-trap]",
   );
 
   for (const dialog of allTrapped) {
@@ -108,7 +108,7 @@ export function cleanDialogFocusTraps(root: Element): void {
 
     if (!isOpen) {
       deactivateFocusTrap(dialog);
-      dialog.removeAttribute("data-a11yer-focus-trap");
+      dialog.removeAttribute("data-a11yer-vue-focus-trap");
     }
   }
 }

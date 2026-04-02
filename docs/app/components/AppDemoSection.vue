@@ -2,8 +2,8 @@
 import { onMounted, onUnmounted, ref } from 'vue'
 
 const TAB_CONTENT: Record<string, string> = {
-  Overview: 'a11yer wraps your Vue 3 app and automatically patches accessibility issues in the DOM.',
-  Install: 'bun add a11yer — then wrap your root component in <A11yer>.',
+  Overview: 'a11yer-vue wraps your Vue 3 app and automatically patches accessibility issues in the DOM.',
+  Install: 'bun add a11yer-vue — then wrap your root component in <A11yer>.',
   Config: 'Pass a config prop to tune contrast ratio, motion preferences, and more.',
 }
 
@@ -19,7 +19,7 @@ let tablistObserver: MutationObserver | null = null
 onMounted(() => {
   timer = setTimeout(() => {
     const patched = document.querySelectorAll(
-      '[data-a11yer-img-alt], [data-a11yer-keyboard], [data-a11yer-roving], [data-a11yer-required], [data-a11yer-autocomplete], [data-a11yer-label], [data-a11yer-table-headers]',
+      '[data-a11yer-vue-img-alt], [data-a11yer-vue-keyboard], [data-a11yer-vue-roving], [data-a11yer-vue-required], [data-a11yer-vue-autocomplete], [data-a11yer-vue-label], [data-a11yer-vue-table-headers]',
     )
     patchedCount.value = patched.length
   }, 500)
@@ -59,7 +59,7 @@ const handleClick = () => {
       class="bg-green-50 dark:bg-green-950 border border-green-200 dark:border-green-800 rounded-lg p-4"
     >
       <p class="text-green-800 dark:text-green-200 font-medium">
-        a11yer automatically fixed {{ patchedCount }} accessibility issues on this page.
+        a11yer-vue automatically fixed {{ patchedCount }} accessibility issues on this page.
       </p>
     </div>
 
@@ -68,7 +68,7 @@ const handleClick = () => {
       <div class="border border-zinc-200 dark:border-zinc-800 rounded-lg p-5">
         <h3 class="font-semibold text-zinc-900 dark:text-white mb-3">Image without alt</h3>
         <p class="text-sm text-zinc-500 mb-3">
-          a11yer derives alt from the filename: "Mountain Landscape"
+          a11yer-vue derives alt from the filename: "Mountain Landscape"
         </p>
         <img
           :src="mountainImgSrc"
@@ -134,7 +134,7 @@ const handleClick = () => {
           Keyboard: div[role=button]
         </h3>
         <p class="text-sm text-zinc-500 mb-3">
-          a11yer adds tabindex=0 and Enter/Space handler.
+          a11yer-vue adds tabindex=0 and Enter/Space handler.
         </p>
         <!-- eslint-disable-next-line vuejs-accessibility/click-events-have-key-events -->
         <div
@@ -146,14 +146,14 @@ const handleClick = () => {
         </div>
       </div>
 
-      <!-- Tabs — roving tabindex managed by a11yer -->
+      <!-- Tabs — roving tabindex managed by a11yer-vue -->
       <div class="border border-zinc-200 dark:border-zinc-800 rounded-lg p-5 md:col-span-2">
         <h3 class="font-semibold text-zinc-900 dark:text-white mb-3">
           Roving tabindex: tablist
         </h3>
         <p class="text-sm text-zinc-500 mb-3">
           Arrow keys navigate between tabs. Only the active tab is in the tab order.
-          a11yer manages tabindex automatically.
+          a11yer-vue manages tabindex automatically.
         </p>
         <div
           role="tablist"

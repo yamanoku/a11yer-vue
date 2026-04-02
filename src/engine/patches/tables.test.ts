@@ -104,7 +104,7 @@ describe("patchTableHeaders", () => {
   it("marks the table as patched after applying", () => {
     const table = buildTable({ firstRow: ["Col1"] });
     patchTableHeaders(document.body, ctx);
-    expect(table.hasAttribute("data-a11yer-table-headers")).toBe(true);
+    expect(table.hasAttribute("data-a11yer-vue-table-headers")).toBe(true);
   });
 
   it("does not double-patch an already-patched table", () => {

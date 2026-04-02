@@ -3,7 +3,7 @@ import type { RGB } from "../../utils/a11y";
 import { contrastRatioFromColors, parseColorToRgb, suggestColor } from "../../utils/a11y";
 import { ensureId, isPatched, isVisible, markPatched } from "../../utils/dom";
 
-const CONTRAST_STYLE_ID = "a11yer-contrast-fixes";
+const CONTRAST_STYLE_ID = "a11yer-vue-contrast-fixes";
 const contrastRules = new Set<string>();
 
 function getOrCreateContrastStyleEl(): HTMLStyleElement | null {
@@ -13,7 +13,7 @@ function getOrCreateContrastStyleEl(): HTMLStyleElement | null {
   if (!el) {
     el = document.createElement("style");
     el.id = CONTRAST_STYLE_ID;
-    el.setAttribute("data-a11yer", "contrast");
+    el.setAttribute("data-a11yer-vue", "contrast");
     document.head.appendChild(el);
   }
   return el;
@@ -174,7 +174,7 @@ export function fixContrastViolations(
     }
 
     const fixedColor = suggestColor(fgHex, bgHex, minRatio);
-    const id = ensureId(el, "a11yer-c");
+    const id = ensureId(el, "a11yer-vue-c");
 
     // Use high-specificity selector instead of !important where possible.
     // [id="x"][id="x"] has specificity (0,2,0) which beats most single-class selectors.

@@ -59,7 +59,7 @@ jobs:
             echo "## npm"
             echo ""
             echo "\`\`\`bash"
-            echo "bun add a11yer@${TAG#v}"
+            echo "bun add a11yer-vue@${TAG#v}"
             echo "\`\`\`"
             echo ""
             echo "## Changes"

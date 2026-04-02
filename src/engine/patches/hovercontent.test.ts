@@ -23,7 +23,7 @@ describe("patchHoverContent", () => {
     document.body.appendChild(tooltip);
 
     patchHoverContent(document.body, ctx);
-    expect(tooltip.hasAttribute("data-a11yer-hover-dismiss")).toBe(true);
+    expect(tooltip.hasAttribute("data-a11yer-vue-hover-dismiss")).toBe(true);
   });
 
   it("patches [popover] elements", () => {
@@ -33,7 +33,7 @@ describe("patchHoverContent", () => {
     document.body.appendChild(popover);
 
     patchHoverContent(document.body, ctx);
-    expect(popover.hasAttribute("data-a11yer-hover-dismiss")).toBe(true);
+    expect(popover.hasAttribute("data-a11yer-vue-hover-dismiss")).toBe(true);
   });
 
   it("patches [data-tooltip] elements", () => {
@@ -43,7 +43,7 @@ describe("patchHoverContent", () => {
     document.body.appendChild(el);
 
     patchHoverContent(document.body, ctx);
-    expect(el.hasAttribute("data-a11yer-hover-dismiss")).toBe(true);
+    expect(el.hasAttribute("data-a11yer-vue-hover-dismiss")).toBe(true);
   });
 
   it("hides tooltip on Escape keydown", () => {
@@ -78,8 +78,8 @@ describe("patchHoverContent", () => {
     patchHoverContent(document.body, ctx);
     patchHoverContent(document.body, ctx);
 
-    // Only one data-a11yer-hover-dismiss attribute (idempotent)
-    expect(tooltip.hasAttribute("data-a11yer-hover-dismiss")).toBe(true);
+    // Only one data-a11yer-vue-hover-dismiss attribute (idempotent)
+    expect(tooltip.hasAttribute("data-a11yer-vue-hover-dismiss")).toBe(true);
   });
 
   it("attaches dismiss handler to the trigger element when aria-describedby links it", () => {

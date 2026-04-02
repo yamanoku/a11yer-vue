@@ -31,6 +31,6 @@ export const SkipLink = defineComponent({
     });
 
     return () =>
-      h("a", { href: "#main-content", class: "a11yer-skip-link" }, L[lang.value] || L.en);
+      h("a", { href: "#main-content", class: "a11yer-vue-skip-link" }, L[lang.value] || L.en);
   },
 });

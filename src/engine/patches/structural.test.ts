@@ -7,7 +7,7 @@ const ctx: PatchContext = { config: defaultA11yConfig };
 
 afterEach(() => {
   document.documentElement.removeAttribute("lang");
-  document.documentElement.removeAttribute("data-a11yer-lang");
+  document.documentElement.removeAttribute("data-a11yer-vue-lang");
   document.body.replaceChildren();
 });
 

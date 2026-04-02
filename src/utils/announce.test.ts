@@ -21,15 +21,15 @@ describe("mountAnnouncer", () => {
   it("creates polite and assertive aria-live regions", () => {
     mountAnnouncer();
 
-    const polite = document.querySelector('[data-a11yer-announcer="polite"]');
-    const assertive = document.querySelector('[data-a11yer-announcer="assertive"]');
+    const polite = document.querySelector('[data-a11yer-vue-announcer="polite"]');
+    const assertive = document.querySelector('[data-a11yer-vue-announcer="assertive"]');
     expect(polite).not.toBeNull();
     expect(assertive).not.toBeNull();
   });
 
   it("polite region has aria-live=polite and role=status", () => {
     mountAnnouncer();
-    const polite = document.querySelector('[data-a11yer-announcer="polite"]');
+    const polite = document.querySelector('[data-a11yer-vue-announcer="polite"]');
     expect(polite?.getAttribute("aria-live")).toBe("polite");
     expect(polite?.getAttribute("role")).toBe("status");
     expect(polite?.getAttribute("aria-atomic")).toBe("true");
@@ -37,7 +37,7 @@ describe("mountAnnouncer", () => {
 
   it("assertive region has aria-live=assertive and role=alert", () => {
     mountAnnouncer();
-    const assertive = document.querySelector('[data-a11yer-announcer="assertive"]');
+    const assertive = document.querySelector('[data-a11yer-vue-announcer="assertive"]');
     expect(assertive?.getAttribute("aria-live")).toBe("assertive");
     expect(assertive?.getAttribute("role")).toBe("alert");
     expect(assertive?.getAttribute("aria-atomic")).toBe("true");
@@ -45,7 +45,7 @@ describe("mountAnnouncer", () => {
 
   it("appends the regions to document.body", () => {
     mountAnnouncer();
-    const polite = document.querySelector('[data-a11yer-announcer="polite"]');
+    const polite = document.querySelector('[data-a11yer-vue-announcer="polite"]');
     expect(polite?.parentElement).toBe(document.body);
   });
 
@@ -65,7 +65,7 @@ describe("mountAnnouncer", () => {
     mountAnnouncer();
     mountAnnouncer();
 
-    const politeRegions = document.querySelectorAll('[data-a11yer-announcer="polite"]');
+    const politeRegions = document.querySelectorAll('[data-a11yer-vue-announcer="polite"]');
     expect(politeRegions.length).toBe(1);
   });
 });
@@ -75,8 +75,8 @@ describe("unmountAnnouncer", () => {
     mountAnnouncer();
     unmountAnnouncer();
 
-    const polite = document.querySelector('[data-a11yer-announcer="polite"]');
-    const assertive = document.querySelector('[data-a11yer-announcer="assertive"]');
+    const polite = document.querySelector('[data-a11yer-vue-announcer="polite"]');
+    const assertive = document.querySelector('[data-a11yer-vue-announcer="assertive"]');
     expect(polite).toBeNull();
     expect(assertive).toBeNull();
   });
@@ -114,7 +114,7 @@ describe("announce", () => {
 
     announce("Navigation completed", "polite");
 
-    const polite = document.querySelector('[data-a11yer-announcer="polite"]');
+    const polite = document.querySelector('[data-a11yer-vue-announcer="polite"]');
     // Before the timeout fires, textContent is cleared
     expect(polite?.textContent).toBe("");
 
@@ -128,7 +128,7 @@ describe("announce", () => {
 
     announce("Error: form invalid", "assertive");
 
-    const assertive = document.querySelector('[data-a11yer-announcer="assertive"]');
+    const assertive = document.querySelector('[data-a11yer-vue-announcer="assertive"]');
     expect(assertive?.textContent).toBe("");
 
     vi.advanceTimersByTime(50);
@@ -143,8 +143,8 @@ describe("announce", () => {
 
     vi.advanceTimersByTime(50);
 
-    const polite = document.querySelector('[data-a11yer-announcer="polite"]');
-    const assertive = document.querySelector('[data-a11yer-announcer="assertive"]');
+    const polite = document.querySelector('[data-a11yer-vue-announcer="polite"]');
+    const assertive = document.querySelector('[data-a11yer-vue-announcer="assertive"]');
 
     expect(polite?.textContent).toBe("Default priority message");
     expect(assertive?.textContent).toBe("");
@@ -154,7 +154,7 @@ describe("announce", () => {
     mountAnnouncer();
     vi.useFakeTimers();
 
-    const polite = document.querySelector('[data-a11yer-announcer="polite"]') as HTMLElement;
+    const polite = document.querySelector('[data-a11yer-vue-announcer="polite"]') as HTMLElement;
     polite.textContent = "Old message";
 
     announce("Same message", "polite");

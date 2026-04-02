@@ -50,7 +50,7 @@ describe("patchCompositeWidgets — tablist", () => {
   it("marks the tablist as patched", () => {
     const { tablist } = buildTablist("A", "B");
     patchCompositeWidgets(document.body, ctx);
-    expect(tablist.hasAttribute("data-a11yer-roving")).toBe(true);
+    expect(tablist.hasAttribute("data-a11yer-vue-roving")).toBe(true);
   });
 
   it("does not double-patch a tablist", () => {
@@ -76,7 +76,7 @@ describe("patchCompositeWidgets — tablist", () => {
     // tabindex should NOT have been set by the patcher on a library-managed element
     expect(tab.hasAttribute("tabindex")).toBe(false);
     // The tablist itself should be marked as patched (skipped)
-    expect(tablist.hasAttribute("data-a11yer-roving")).toBe(true);
+    expect(tablist.hasAttribute("data-a11yer-vue-roving")).toBe(true);
   });
 
   it("only includes direct children tabs, not nested sub-tablist tabs", () => {

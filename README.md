@@ -1,8 +1,8 @@
-# a11yer
+# a11yer-vue
 
-[![npm](https://img.shields.io/npm/v/a11yer)](https://www.npmjs.com/package/a11yer)
-[![CI](https://github.com/EdamAme-x/a11yer/actions/workflows/ci.yml/badge.svg)](https://github.com/EdamAme-x/a11yer/actions/workflows/ci.yml)
-[![E2E](https://github.com/EdamAme-x/a11yer/actions/workflows/e2e.yml/badge.svg)](https://github.com/EdamAme-x/a11yer/actions/workflows/e2e.yml)
+[![npm](https://img.shields.io/npm/v/a11yer-vue)](https://www.npmjs.com/package/a11yer-vue)
+[![CI](https://github.com/EdamAme-x/a11yer-vue/actions/workflows/ci.yml/badge.svg)](https://github.com/EdamAme-x/a11yer-vue/actions/workflows/ci.yml)
+[![E2E](https://github.com/EdamAme-x/a11yer-vue/actions/workflows/e2e.yml/badge.svg)](https://github.com/EdamAme-x/a11yer-vue/actions/workflows/e2e.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 Wrap your Vue 3 app in `<A11yer>` and accessibility is automatically handled.
@@ -12,7 +12,7 @@ No hooks to call. No props to spread. No components to replace. Just wrap and sh
 ## Install
 
 ```bash
-bun add a11yer    # npm i a11yer / pnpm add a11yer / yarn add a11yer
+bun add a11yer-vue    # npm i a11yer-vue / pnpm add a11yer-vue / yarn add a11yer-vue
 ```
 
 Requires `vue ^3.0.0` as a peer dependency (already installed in any Vue 3 project).
@@ -24,7 +24,7 @@ Wrap your root component with `<A11yer>`. The recommended place is your app's en
 ```vue
 <!-- App.vue -->
 <script setup>
-import { A11yer } from "a11yer";
+import { A11yer } from "a11yer-vue";
 </script>
 
 <template>
@@ -55,7 +55,7 @@ The skip link label is automatically localised to the page language (`document.d
 
 ## What it does
 
-a11yer silently scans and patches your DOM for accessibility issues:
+a11yer-vue silently scans and patches your DOM for accessibility issues:
 
 | Category | What gets fixed |
 |----------|----------------|
@@ -78,7 +78,7 @@ All features are enabled by default. Override via the `config` prop:
 
 ```vue
 <script setup>
-import { A11yer } from "a11yer";
+import { A11yer } from "a11yer-vue";
 </script>
 
 <template>
@@ -108,8 +108,8 @@ You can also define the config as a reactive object:
 ```vue
 <script setup>
 import { ref } from "vue";
-import { A11yer } from "a11yer";
-import type { A11yerConfig } from "a11yer";
+import { A11yer } from "a11yer-vue";
+import type { A11yerConfig } from "a11yer-vue";
 
 const a11yConfig = ref<A11yerConfig>({
   a11y: { minContrastRatio: 7 },
@@ -133,7 +133,7 @@ const a11yConfig = ref<A11yerConfig>({
 
 ## Plays nice with others
 
-a11yer detects elements managed by existing a11y libraries and skips them:
+a11yer-vue detects elements managed by existing a11y libraries and skips them:
 
 - Headless UI (Tailwind)
 - Ark UI / Zag
@@ -164,7 +164,7 @@ No double-injection. No conflicts.
 </template>
 
 <script setup>
-import { A11yer } from "a11yer";
+import { A11yer } from "a11yer-vue";
 </script>
 ```
 
@@ -188,15 +188,15 @@ bun run test:e2e      # E2E tests (Playwright, all browsers — run in CI, see b
 E2E tests run in GitHub Actions, not locally. To run locally via Docker:
 
 ```bash
-docker build -t a11yer-test .
+docker build -t a11yer-vue-test .
 ```
 
 ## API
 
 ```ts
 // That's the entire public API
-import { A11yer } from "a11yer";
-import type { A11yerProps, A11yerConfig } from "a11yer";
+import { A11yer } from "a11yer-vue";
+import type { A11yerProps, A11yerConfig } from "a11yer-vue";
 ```
 
 ### `A11yer`
@@ -230,9 +230,9 @@ interface A11yerConfig {
 
 ## Disclaimer
 
-a11yer automatically fixes many common accessibility issues, but it does not guarantee full WCAG 2.2 compliance. Automated tools can address approximately 30-40% of WCAG success criteria. The remaining criteria require human judgment, manual testing with assistive technology, and content-level decisions (meaningful alt text, logical heading structure, comprehensible error messages, etc.).
+a11yer-vue automatically fixes many common accessibility issues, but it does not guarantee full WCAG 2.2 compliance. Automated tools can address approximately 30-40% of WCAG success criteria. The remaining criteria require human judgment, manual testing with assistive technology, and content-level decisions (meaningful alt text, logical heading structure, comprehensible error messages, etc.).
 
-**Do not rely on a11yer as your sole accessibility solution.** Use it as a safety net alongside manual a11y audits, screen reader testing, and accessibility-focused design practices.
+**Do not rely on a11yer-vue as your sole accessibility solution.** Use it as a safety net alongside manual a11y audits, screen reader testing, and accessibility-focused design practices.
 
 ## License
 

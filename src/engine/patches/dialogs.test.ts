@@ -26,7 +26,7 @@ describe("patchDialogFocusTrap", () => {
   it("patches div[role=dialog][aria-modal=true]", () => {
     const dialog = buildDivDialog();
     patchDialogFocusTrap(document.body, ctx);
-    expect(dialog.hasAttribute("data-a11yer-focus-trap")).toBe(true);
+    expect(dialog.hasAttribute("data-a11yer-vue-focus-trap")).toBe(true);
   });
 
   it("does NOT patch native <dialog> elements", () => {
@@ -39,7 +39,7 @@ describe("patchDialogFocusTrap", () => {
     document.body.appendChild(dialog);
 
     patchDialogFocusTrap(document.body, ctx);
-    expect(dialog.hasAttribute("data-a11yer-focus-trap")).toBe(false);
+    expect(dialog.hasAttribute("data-a11yer-vue-focus-trap")).toBe(false);
   });
 
   it("skips dialogs managed by Headless UI", () => {
@@ -51,7 +51,7 @@ describe("patchDialogFocusTrap", () => {
 
     patchDialogFocusTrap(document.body, ctx);
     // Still marked as patched (skipped), but the library-managed path was taken
-    expect(dialog.hasAttribute("data-a11yer-focus-trap")).toBe(true);
+    expect(dialog.hasAttribute("data-a11yer-vue-focus-trap")).toBe(true);
   });
 
   it("skips aria-hidden dialogs", () => {
@@ -62,7 +62,7 @@ describe("patchDialogFocusTrap", () => {
     document.body.appendChild(dialog);
 
     patchDialogFocusTrap(document.body, ctx);
-    expect(dialog.hasAttribute("data-a11yer-focus-trap")).toBe(false);
+    expect(dialog.hasAttribute("data-a11yer-vue-focus-trap")).toBe(false);
   });
 
   it("does not double-patch a dialog", () => {
@@ -70,7 +70,7 @@ describe("patchDialogFocusTrap", () => {
     patchDialogFocusTrap(document.body, ctx);
     patchDialogFocusTrap(document.body, ctx);
     // Should only have one attribute (not duplicated)
-    expect(dialog.hasAttribute("data-a11yer-focus-trap")).toBe(true);
+    expect(dialog.hasAttribute("data-a11yer-vue-focus-trap")).toBe(true);
   });
 });
 
@@ -78,34 +78,34 @@ describe("cleanDialogFocusTraps", () => {
   it("removes the focus-trap attribute on dialogs that are closed (aria-hidden=true)", () => {
     const dialog = buildDivDialog();
     patchDialogFocusTrap(document.body, ctx);
-    expect(dialog.hasAttribute("data-a11yer-focus-trap")).toBe(true);
+    expect(dialog.hasAttribute("data-a11yer-vue-focus-trap")).toBe(true);
 
     // Close the dialog
     dialog.setAttribute("aria-hidden", "true");
     cleanDialogFocusTraps(document.body);
 
-    expect(dialog.hasAttribute("data-a11yer-focus-trap")).toBe(false);
+    expect(dialog.hasAttribute("data-a11yer-vue-focus-trap")).toBe(false);
   });
 
   it("removes the focus-trap attribute on dialogs that lost aria-modal", () => {
     const dialog = buildDivDialog();
     patchDialogFocusTrap(document.body, ctx);
-    expect(dialog.hasAttribute("data-a11yer-focus-trap")).toBe(true);
+    expect(dialog.hasAttribute("data-a11yer-vue-focus-trap")).toBe(true);
 
     dialog.removeAttribute("aria-modal");
     cleanDialogFocusTraps(document.body);
 
-    expect(dialog.hasAttribute("data-a11yer-focus-trap")).toBe(false);
+    expect(dialog.hasAttribute("data-a11yer-vue-focus-trap")).toBe(false);
   });
 
   it("keeps the focus-trap attribute on still-open dialogs", () => {
     const dialog = buildDivDialog();
     patchDialogFocusTrap(document.body, ctx);
-    expect(dialog.hasAttribute("data-a11yer-focus-trap")).toBe(true);
+    expect(dialog.hasAttribute("data-a11yer-vue-focus-trap")).toBe(true);
 
     cleanDialogFocusTraps(document.body);
 
     // Dialog is still open (role=dialog, aria-modal=true, no aria-hidden)
-    expect(dialog.hasAttribute("data-a11yer-focus-trap")).toBe(true);
+    expect(dialog.hasAttribute("data-a11yer-vue-focus-trap")).toBe(true);
   });
 });

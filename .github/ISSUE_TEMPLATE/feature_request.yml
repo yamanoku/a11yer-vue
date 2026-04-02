@@ -14,7 +14,7 @@ body:
     id: proposed
     attributes:
       label: Proposed auto-fix behavior
-      description: How should a11yer automatically handle this?
+      description: How should a11yer-vue automatically handle this?
     validations:
       required: true
 

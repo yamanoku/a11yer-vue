@@ -1,13 +1,13 @@
 <script setup lang="ts">
 useSeoMeta({
-  title: 'a11yer — Automatic Accessibility for Vue 3',
+  title: 'a11yer-vue — Automatic Accessibility for Vue 3',
   description: 'Wrap your Vue 3 app in <A11yer> and accessibility is automatically handled.',
 })
 
-const INSTALL_CODE = `bun add a11yer    # npm i a11yer / pnpm add a11yer / yarn add a11yer`
+const INSTALL_CODE = `bun add a11yer-vue    # npm i a11yer-vue / pnpm add a11yer-vue / yarn add a11yer-vue`
 
 const USAGE_CODE = `<script setup>
-import { A11yer } from "a11yer";
+import { A11yer } from "a11yer-vue";
 <\/script>
 
 <template>
@@ -133,7 +133,7 @@ const compatLibs = [
         Plays nice with others
       </h2>
       <p class="text-zinc-600 dark:text-zinc-400 mb-6">
-        a11yer detects elements managed by existing libraries and skips them. No conflicts.
+        a11yer-vue detects elements managed by existing libraries and skips them. No conflicts.
       </p>
       <div class="flex flex-wrap gap-3">
         <span
@@ -149,7 +149,7 @@ const compatLibs = [
     <!-- Disclaimer -->
     <section class="mb-20 border-l-4 border-amber-400 pl-6 py-2">
       <p class="text-sm text-zinc-600 dark:text-zinc-400">
-        <strong>Disclaimer:</strong> a11yer automatically fixes many common accessibility issues,
+        <strong>Disclaimer:</strong> a11yer-vue automatically fixes many common accessibility issues,
         but does not guarantee full WCAG 2.2 compliance. Use it as a safety net alongside manual
         a11y audits and screen reader testing.
       </p>

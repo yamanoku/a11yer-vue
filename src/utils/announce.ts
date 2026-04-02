@@ -12,7 +12,7 @@ function createRegion(
   el.setAttribute("aria-live", priority);
   el.setAttribute("aria-atomic", "true");
   el.setAttribute("role", priority === "assertive" ? "alert" : "status");
-  el.setAttribute("data-a11yer-announcer", priority);
+  el.setAttribute("data-a11yer-vue-announcer", priority);
   el.style.cssText = SR_ONLY_STYLES;
   return el;
 }

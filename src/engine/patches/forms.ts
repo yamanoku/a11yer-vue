@@ -36,10 +36,10 @@ export function patchAriaInvalid(root: Element, _ctx: PatchContext): void {
     // Skip if aria-invalid is already set (true OR false — respect developer intent)
     if (input.hasAttribute("aria-invalid")) continue;
 
-    const errorId = ensureId(errorEl, "a11yer-error");
+    const errorId = ensureId(errorEl, "a11yer-vue-error");
 
     input.setAttribute("aria-invalid", "true");
-    input.setAttribute("data-a11yer-error-source", errorId);
+    input.setAttribute("data-a11yer-vue-error-source", errorId);
     const existing = input.getAttribute("aria-describedby");
     input.setAttribute(
       "aria-describedby",
@@ -55,10 +55,10 @@ export function patchAriaInvalid(root: Element, _ctx: PatchContext): void {
  * has been removed from the DOM.
  */
 export function cleanAriaInvalid(root: Element): void {
-  const invalidInputs = root.querySelectorAll("[data-a11yer-error-source]");
+  const invalidInputs = root.querySelectorAll("[data-a11yer-vue-error-source]");
 
   for (const input of invalidInputs) {
-    const errorId = input.getAttribute("data-a11yer-error-source");
+    const errorId = input.getAttribute("data-a11yer-vue-error-source");
     if (!errorId) continue;
 
     // Check if the error element still exists
@@ -67,7 +67,7 @@ export function cleanAriaInvalid(root: Element): void {
 
     // Error element removed — clean up
     input.removeAttribute("aria-invalid");
-    input.removeAttribute("data-a11yer-error-source");
+    input.removeAttribute("data-a11yer-vue-error-source");
 
     const describedBy = input.getAttribute("aria-describedby");
     if (describedBy) {
@@ -104,7 +104,7 @@ export function patchInputLabels(root: Element, _ctx: PatchContext): void {
       (prev.tagName === "SPAN" || prev.tagName === "P" || prev.tagName === "DIV") &&
       prev.textContent?.trim()
     ) {
-      const labelId = ensureId(prev, "a11yer-label");
+      const labelId = ensureId(prev, "a11yer-vue-label");
       input.setAttribute("aria-labelledby", labelId);
       markPatched(input, "label");
     }

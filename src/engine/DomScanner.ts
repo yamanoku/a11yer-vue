@@ -23,8 +23,8 @@ function patchHistoryOnce(): void {
   if (typeof window === "undefined") return;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const h = history as any;
-  if (h.__a11yerPatched) return;
-  h.__a11yerPatched = true;
+  if (h.__a11yer-vuePatched) return;
+  h.__a11yer-vuePatched = true;
 
   const origPushState = history.pushState.bind(history);
   const origReplaceState = history.replaceState.bind(history);

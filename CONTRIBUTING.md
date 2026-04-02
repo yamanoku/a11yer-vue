@@ -1,4 +1,4 @@
-# Contributing to a11yer
+# Contributing to a11yer-vue
 
 ## Setup
 
