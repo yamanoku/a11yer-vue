@@ -1,8 +1,7 @@
 # a11yer-vue
 
-[![npm](https://img.shields.io/npm/v/a11yer-vue)](https://www.npmjs.com/package/a11yer-vue)
-[![CI](https://github.com/EdamAme-x/a11yer-vue/actions/workflows/ci.yml/badge.svg)](https://github.com/EdamAme-x/a11yer-vue/actions/workflows/ci.yml)
-[![E2E](https://github.com/EdamAme-x/a11yer-vue/actions/workflows/e2e.yml/badge.svg)](https://github.com/EdamAme-x/a11yer-vue/actions/workflows/e2e.yml)
+[![CI](https://github.com/yamanoku/a11yer-vue/actions/workflows/ci.yml/badge.svg)](https://github.com/yamanoku/a11yer-vue/actions/workflows/ci.yml)
+[![E2E](https://github.com/yamanoku/a11yer-vue/actions/workflows/e2e.yml/badge.svg)](https://github.com/yamanoku/a11yer-vue/actions/workflows/e2e.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 Wrap your Vue 3 app in `<A11yer>` and accessibility is automatically handled.
