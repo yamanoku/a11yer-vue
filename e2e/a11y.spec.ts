@@ -3,8 +3,8 @@ import { expect, test } from "@playwright/test";
 
 async function waitForA11yer(page: import("@playwright/test").Page) {
   await page.goto("/");
-  // Wait for a11yer to mount and run patches
-  await page.waitForSelector("#a11yer-styles", { state: "attached", timeout: 10000 });
+  // Wait for a11yer-vue to mount and run patches
+  await page.waitForSelector("#a11yer-vue-styles", { state: "attached", timeout: 10000 });
   // Wait for DOM patches to complete (keyboard patch adds tabindex to div[role=button])
   await page.waitForSelector('[role="button"][tabindex]', { state: "attached", timeout: 10000 });
 }
@@ -14,7 +14,7 @@ test("structural + images + forms", async ({ page }) => {
 
   expect(await page.getAttribute("html", "lang")).toBeTruthy();
 
-  const skipLink = page.locator(".a11yer-skip-link");
+  const skipLink = page.locator(".a11yer-vue-skip-link");
   await expect(skipLink).toBeAttached();
   await expect(page.locator(`${await skipLink.getAttribute("href")}`)).toBeAttached();
 
@@ -40,18 +40,18 @@ test("tables + keyboard + composites + CSS", async ({ page }) => {
   expect(await page.locator('[role="tab"]').nth(0).getAttribute("tabindex")).toBe("0");
   expect(await page.locator('[role="tab"]').nth(1).getAttribute("tabindex")).toBe("-1");
 
-  const css = await page.locator("#a11yer-styles").textContent();
+  const css = await page.locator("#a11yer-vue-styles").textContent();
   expect(css).toContain(":focus-visible");
-  expect(css).toContain("a11yer-sr-only");
+  expect(css).toContain("a11yer-vue-sr-only");
 });
 
 test("responsive viewports", async ({ page }) => {
   for (const [w, h] of [[375, 812], [768, 1024], [1280, 720]]) {
     await page.setViewportSize({ width: w, height: h });
     await page.goto("/");
-    await page.waitForSelector("#a11yer-styles", { state: "attached", timeout: 10000 });
+    await page.waitForSelector("#a11yer-vue-styles", { state: "attached", timeout: 10000 });
     expect(await page.getAttribute("html", "lang")).toBeTruthy();
-    await expect(page.locator(".a11yer-skip-link")).toBeAttached();
+    await expect(page.locator(".a11yer-vue-skip-link")).toBeAttached();
   }
 });
 

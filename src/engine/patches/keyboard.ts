@@ -77,7 +77,7 @@ export function patchKeyboardHandlers(
  * Clean up keyboard handlers for removed elements.
  */
 export function cleanKeyboardHandlers(root: Element): void {
-  const patched = root.querySelectorAll("[data-a11yer-keyboard]");
+  const patched = root.querySelectorAll("[data-a11yer-vue-keyboard]");
   for (const el of patched) {
     if (!el.isConnected) {
       const handler = keyboardHandlers.get(el);

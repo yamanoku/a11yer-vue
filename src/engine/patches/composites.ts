@@ -177,7 +177,7 @@ export function patchCompositeWidgets(
  * Clean up handlers for removed composite widgets.
  */
 export function cleanCompositeWidgets(root: Element): void {
-  const patched = root.querySelectorAll("[data-a11yer-roving]");
+  const patched = root.querySelectorAll("[data-a11yer-vue-roving]");
   for (const container of patched) {
     if (!container.isConnected) {
       const handler = activeHandlers.get(container);

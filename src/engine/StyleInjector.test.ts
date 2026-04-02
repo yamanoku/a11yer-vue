@@ -10,41 +10,41 @@ const baseOptions: StyleInjectorOptions = {
 
 afterEach(() => {
   // Clean up any injected style element
-  document.getElementById("a11yer-styles")?.remove();
-  document.getElementById("a11yer-contrast-fixes")?.remove();
+  document.getElementById("a11yer-vue-styles")?.remove();
+  document.getElementById("a11yer-vue-contrast-fixes")?.remove();
 });
 
 describe("StyleInjector", () => {
-  it("inject() creates a style element with id a11yer-styles", () => {
+  it("inject() creates a style element with id a11yer-vue-styles", () => {
     const injector = new StyleInjector();
     injector.inject(baseOptions);
 
-    const styleEl = document.getElementById("a11yer-styles");
+    const styleEl = document.getElementById("a11yer-vue-styles");
     expect(styleEl).not.toBeNull();
     expect(styleEl?.tagName.toLowerCase()).toBe("style");
   });
 
-  it("inject() sets data-a11yer=styles attribute on the style element", () => {
+  it("inject() sets data-a11yer-vue=styles attribute on the style element", () => {
     const injector = new StyleInjector();
     injector.inject(baseOptions);
 
-    const styleEl = document.getElementById("a11yer-styles");
-    expect(styleEl?.getAttribute("data-a11yer")).toBe("styles");
+    const styleEl = document.getElementById("a11yer-vue-styles");
+    expect(styleEl?.getAttribute("data-a11yer-vue")).toBe("styles");
   });
 
   it("inject() always includes the sr-only utility class", () => {
     const injector = new StyleInjector();
     injector.inject(baseOptions);
 
-    const styleEl = document.getElementById("a11yer-styles");
-    expect(styleEl?.textContent).toContain(".a11yer-sr-only");
+    const styleEl = document.getElementById("a11yer-vue-styles");
+    expect(styleEl?.textContent).toContain(".a11yer-vue-sr-only");
   });
 
   it("inject() includes focus-visible CSS when focusVisible=true", () => {
     const injector = new StyleInjector();
     injector.inject({ ...baseOptions, focusVisible: true });
 
-    const styleEl = document.getElementById("a11yer-styles");
+    const styleEl = document.getElementById("a11yer-vue-styles");
     expect(styleEl?.textContent).toContain(":focus-visible");
   });
 
@@ -52,7 +52,7 @@ describe("StyleInjector", () => {
     const injector = new StyleInjector();
     injector.inject({ ...baseOptions, focusVisible: false });
 
-    const styleEl = document.getElementById("a11yer-styles");
+    const styleEl = document.getElementById("a11yer-vue-styles");
     expect(styleEl?.textContent).not.toContain(":focus-visible");
   });
 
@@ -60,7 +60,7 @@ describe("StyleInjector", () => {
     const injector = new StyleInjector();
     injector.inject({ ...baseOptions, reducedMotion: true });
 
-    const styleEl = document.getElementById("a11yer-styles");
+    const styleEl = document.getElementById("a11yer-vue-styles");
     expect(styleEl?.textContent).toContain("prefers-reduced-motion");
   });
 
@@ -68,7 +68,7 @@ describe("StyleInjector", () => {
     const injector = new StyleInjector();
     injector.inject({ ...baseOptions, reducedMotion: false });
 
-    const styleEl = document.getElementById("a11yer-styles");
+    const styleEl = document.getElementById("a11yer-vue-styles");
     expect(styleEl?.textContent).not.toContain("prefers-reduced-motion");
   });
 
@@ -80,7 +80,7 @@ describe("StyleInjector", () => {
       focusStyle: { outline: "3px dotted red", outlineOffset: "4px" },
     });
 
-    const styleEl = document.getElementById("a11yer-styles");
+    const styleEl = document.getElementById("a11yer-vue-styles");
     expect(styleEl?.textContent).toContain("3px dotted red");
     expect(styleEl?.textContent).toContain("4px");
   });
@@ -88,10 +88,10 @@ describe("StyleInjector", () => {
   it("inject() reuses an existing style element on second call", () => {
     const injector = new StyleInjector();
     injector.inject(baseOptions);
-    const firstEl = document.getElementById("a11yer-styles");
+    const firstEl = document.getElementById("a11yer-vue-styles");
 
     injector.inject({ ...baseOptions, reducedMotion: true });
-    const secondEl = document.getElementById("a11yer-styles");
+    const secondEl = document.getElementById("a11yer-vue-styles");
 
     // Should be the same DOM node
     expect(firstEl).toBe(secondEl);
@@ -102,10 +102,10 @@ describe("StyleInjector", () => {
   it("remove() removes the style element from the DOM", () => {
     const injector = new StyleInjector();
     injector.inject(baseOptions);
-    expect(document.getElementById("a11yer-styles")).not.toBeNull();
+    expect(document.getElementById("a11yer-vue-styles")).not.toBeNull();
 
     injector.remove();
-    expect(document.getElementById("a11yer-styles")).toBeNull();
+    expect(document.getElementById("a11yer-vue-styles")).toBeNull();
   });
 
   it("remove() does not throw when called before inject()", () => {
@@ -123,16 +123,16 @@ describe("StyleInjector", () => {
   it("inject() picks up an existing style element already in the DOM", () => {
     // Simulate a pre-existing style element (e.g. from SSR)
     const existing = document.createElement("style");
-    existing.id = "a11yer-styles";
+    existing.id = "a11yer-vue-styles";
     document.head.appendChild(existing);
 
     const injector = new StyleInjector();
     injector.inject(baseOptions);
 
-    const styleEl = document.getElementById("a11yer-styles");
+    const styleEl = document.getElementById("a11yer-vue-styles");
     // Should be the same element that was already there
     expect(styleEl).toBe(existing);
     // Content should have been populated
-    expect(styleEl?.textContent).toContain(".a11yer-sr-only");
+    expect(styleEl?.textContent).toContain(".a11yer-vue-sr-only");
   });
 });

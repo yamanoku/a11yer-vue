@@ -123,13 +123,13 @@ describe("patchAutocomplete", () => {
     expect(input.hasAttribute("autocomplete")).toBe(false);
   });
 
-  it("marks patched inputs with data-a11yer-autocomplete", () => {
+  it("marks patched inputs with data-a11yer-vue-autocomplete", () => {
     const input = document.createElement("input");
     input.type = "email";
     document.body.appendChild(input);
 
     patchAutocomplete(document.body, ctx);
-    expect(input.hasAttribute("data-a11yer-autocomplete")).toBe(true);
+    expect(input.hasAttribute("data-a11yer-vue-autocomplete")).toBe(true);
   });
 
   it("does not re-patch already patched inputs", () => {

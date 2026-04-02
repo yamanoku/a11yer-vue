@@ -5,9 +5,10 @@ const E2E_DIR = import.meta.dir;
 
 // Build the test app
 const buildResult = await Bun.build({
-  entrypoints: [join(E2E_DIR, "test-app.tsx")],
+  entrypoints: [join(E2E_DIR, "test-app.ts")],
   outdir: join(E2E_DIR, ".build"),
   target: "browser",
+  format: "iife",
   minify: false,
 });
 

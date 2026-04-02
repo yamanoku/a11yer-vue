@@ -32,7 +32,7 @@ export function patchSkipLinkTarget(root: Element): void {
   }
 
   // Sync skip link href to match the main's actual id
-  const skipLink = document.querySelector(".a11yer-skip-link");
+  const skipLink = document.querySelector(".a11yer-vue-skip-link");
   if (skipLink) {
     skipLink.setAttribute("href", `#${main.id}`);
   }
