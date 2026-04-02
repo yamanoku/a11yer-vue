@@ -8,6 +8,9 @@ Wrap your Vue 3 app in `<A11yer>` and accessibility is automatically handled.
 
 No hooks to call. No props to spread. No components to replace. Just wrap and ship.
 
+> [!NOTE]
+> React version is [EdamAme-x/a11yer](https://github.com/EdamAme-x/a11yer).
+
 ## Install
 
 ```bash
@@ -232,6 +235,10 @@ interface A11yerConfig {
 a11yer-vue automatically fixes many common accessibility issues, but it does not guarantee full WCAG 2.2 compliance. Automated tools can address approximately 30-40% of WCAG success criteria. The remaining criteria require human judgment, manual testing with assistive technology, and content-level decisions (meaningful alt text, logical heading structure, comprehensible error messages, etc.).
 
 **Do not rely on a11yer-vue as your sole accessibility solution.** Use it as a safety net alongside manual a11y audits, screen reader testing, and accessibility-focused design practices.
+
+## Acknowledgments
+
+a11yer-vue is a Vue 3 port inspired by [EdamAme-x/a11yer](https://github.com/EdamAme-x/a11yer), the original framework-agnostic accessibility library. The core concepts, patch strategies, and overall architecture of this library are deeply informed by that work. Many thanks to [EdamAme-x](https://github.com/EdamAme-x) for creating and sharing it.
 
 ## License
 

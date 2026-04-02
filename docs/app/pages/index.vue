@@ -154,5 +154,26 @@ const compatLibs = [
         a11y audits and screen reader testing.
       </p>
     </section>
+
+    <!-- Acknowledgments -->
+    <section class="mb-20">
+      <h2 class="text-3xl font-bold text-zinc-900 dark:text-white mb-4">Acknowledgments</h2>
+      <p class="text-zinc-600 dark:text-zinc-400">
+        a11yer-vue is a Vue 3 port inspired by
+        <a
+          href="https://github.com/EdamAme-x/a11yer"
+          class="text-zinc-900 dark:text-white underline hover:no-underline"
+          target="_blank"
+        >EdamAme-x/a11yer</a>,
+        the original framework-agnostic accessibility library. The core concepts, patch strategies,
+        and overall architecture of this library are deeply informed by that work. Many thanks to
+        <a
+          href="https://github.com/EdamAme-x"
+          class="text-zinc-900 dark:text-white underline hover:no-underline"
+          target="_blank"
+        >EdamAme-x</a>
+        for creating and sharing it.
+      </p>
+    </section>
   </main>
 </template>
