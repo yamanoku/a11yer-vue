@@ -8,6 +8,7 @@ const buildResult = await Bun.build({
   entrypoints: [join(E2E_DIR, "test-app.ts")],
   outdir: join(E2E_DIR, ".build"),
   target: "browser",
+  format: "iife",
   minify: false,
 });
 
