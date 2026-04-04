@@ -23,7 +23,7 @@ jobs:
 
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
-          node-version: "20"
+          node-version: "24"
           registry-url: "https://registry.npmjs.org"
 
       - name: Install dependencies
@@ -39,38 +39,4 @@ jobs:
         run: bun run build
 
       - name: Publish to npm
-        run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Generate release notes
-        id: notes
-        run: |
-          TAG="${GITHUB_REF#refs/tags/}"
-          PREV_TAG=$(git tag --sort=-creatordate | grep '^v' | sed -n '2p' || echo "")
-          if [ -z "$PREV_TAG" ]; then
-            BODY=$(git log --pretty=format:"- %s" HEAD)
-          else
-            BODY=$(git log --pretty=format:"- %s" "${PREV_TAG}..${TAG}")
-          fi
-          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
-          {
-            echo "body<<RELEASE_EOF"
-            echo "## npm"
-            echo ""
-            echo "\`\`\`bash"
-            echo "bun add a11yer-vue@${TAG#v}"
-            echo "\`\`\`"
-            echo ""
-            echo "## Changes"
-            echo ""
-            echo "$BODY"
-            echo "RELEASE_EOF"
-          } >> "$GITHUB_OUTPUT"
-
-      - name: Create GitHub Release
-        env:
-          GH_TOKEN: ${{ github.token }}
-          TAG: ${{ steps.notes.outputs.tag }}
-          BODY: ${{ steps.notes.outputs.body }}
-        run: gh release create "$TAG" --title "$TAG" --notes "$BODY"
+        run: npm publish
