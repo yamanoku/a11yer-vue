@@ -39,4 +39,5 @@ jobs:
         run: bun run build
 
       - name: Publish to npm
+        run: npm install -g npm@latest
         run: npm publish
