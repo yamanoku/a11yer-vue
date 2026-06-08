@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
   app: {
-    baseURL: '/a11yer-vue/',
+    baseURL: '/',
     head: {
       htmlAttrs: {
         lang: 'en',
