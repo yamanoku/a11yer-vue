@@ -30,7 +30,9 @@ This site is deployed via Cloudflare Pages (Git integration). Build settings:
 
 - **Root directory**: repo root (leave blank — the library must be built before the docs)
 - **Build command**: `bun install --frozen-lockfile && bun run build && cd docs && bun install && bun run build`
-- **Build output directory**: `docs/.output/public`
+- **Build output directory**: `docs/dist`
 - **Environment variable**: `BUN_VERSION=1.3.14`
 
-The site is fully static (`nuxt generate`), so no Nitro Cloudflare preset is required.
+On Cloudflare's build environment, Nuxt auto-selects the `cloudflare-pages-static` Nitro
+preset, which emits the static site (plus `_headers` / `_redirects`) to `docs/dist`.
+Locally, `bun run build` uses the default `static` preset and outputs to `docs/.output/public`.
