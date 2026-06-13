@@ -34,5 +34,5 @@ playwright-report
 
 # Docs
 docs/node_modules
-docs/.next
-docs/out
+docs/.nuxt
+docs/.output

@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Nuxt 4 documentation site for the a11yer-vue library, deployed to Cloudflare Pages.
 
 ## Getting Started
 
-First, run the development server:
+First, build the a11yer-vue library, then run the docs dev server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# From the repo root: build the library (tsup -> ../dist/)
+bun run build
+
+# Then, in this directory
+bun run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `app/pages/index.vue`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The docs site imports the local `a11yer-vue` build via a Nuxt alias (`../dist/index.js`, see `nuxt.config.ts`), so the library must be built first.
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+To learn more about Nuxt, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Nuxt Documentation](https://nuxt.com/docs) - learn about Nuxt features and API.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deploy on Cloudflare Pages
 
-## Deploy on Vercel
+This site is deployed via Cloudflare Pages (Git integration). Build settings:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Root directory**: repo root (leave blank — the library must be built before the docs)
+- **Build command**: `bun install --frozen-lockfile && bun run build && cd docs && bun install && bun run build`
+- **Build output directory**: `docs/.output/public`
+- **Environment variable**: `BUN_VERSION=1.3.14`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The site is fully static (`nuxt generate`), so no Nitro Cloudflare preset is required.
